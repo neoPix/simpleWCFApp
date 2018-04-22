@@ -9,11 +9,12 @@ namespace simpleWCFApp.Services
         public UserStore()
         {
             this.Users = new List<User>();
+            this.Populate();
         }
 
         public IEnumerable<User> Users { get; set; }
 
-        public void Populate()
+        private void Populate()
         {
             List<User> list = (List<User>)this.Users;
             list.Add(new User() { 
