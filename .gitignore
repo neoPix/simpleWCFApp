@@ -1,0 +1,7 @@
+*.suo
+**/bin
+**/Debug
+**/obj
+*.user
+/packages/
+*.ini

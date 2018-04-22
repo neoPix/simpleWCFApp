@@ -7,23 +7,23 @@ Param(
 
 $user = [Security.Principal.WindowsIdentity]::GetCurrent();
 if(!((New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator))){
-  Write-Host "Vous devez √©x√©cuter ce script en tant qu'administrateur"
+  Write-Host "Vous devez ÈxÈcuter ce script en tant qu'administrateur"
   Exit
 }
 
 $Policy = "RemoteSigned"
 If ((get-ExecutionPolicy) -ne $Policy) {
-  Write-Host "Modification de la politique d√©x√©cution des scripts"
+  Write-Host "Modification de la politique d'ÈxÈcution des scripts"
   Set-ExecutionPolicy $Policy -Force
-  Write-Host "Veuillez √©x√©cuter cette comande dans un nouvel environnement"
+  Write-Host "Veuillez ÈxÈcuter cette comande dans un nouvel environnement"
   Exit
 }
 
 $origin = pwd
-$Pwd = $origin
+$Path = $origin
 
 <# Instalation du serveur et des services #>
-If(Get-Module -ListAvailable -Name ServerManager){
+<#If(Get-Module -ListAvailable -Name ServerManager){
     Import-Module ServerManager
     Add-WindowsFeature -Name NET-HTTP-Activation,Web-Common-Http,Web-Asp-Net,Web-Net-Ext,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Http-Logging,Web-Request-Monitor,Web-Basic-Auth,Web-Windows-Auth,Web-Filtering,Web-Performance,Web-Mgmt-Console,Web-Mgmt-Compat,RSAT-Web-Server -IncludeAllSubFeature
 }
@@ -33,7 +33,7 @@ else{
     $install | out-file "c:\iisinstall.cmd" -Encoding ASCII -Force
     Invoke-Expression "c:\iisinstall.cmd"
     rm "$env:temp\iisinstall.cmd"
-}
+}#>
 
 <# Configuration de IIS #>
 Import-Module WebAdministration
@@ -64,7 +64,7 @@ $iisApp = $null
 if(!(Test-Path simpleWCFApp)){
     $appPath = join-path $Path 'simpleWCFApp.app' -resolve
     Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\InetMgr\Parameters -Name IncrementalSiteIDCreation -Value 0
-    $iisApp = New-Item agp -bindings @{protocol="http";bindingInformation=":80:"} -physicalPath $appPath
+    $iisApp = New-Item simpleWCFApp -bindings @{protocol="http";bindingInformation=":80:"} -physicalPath $appPath
     C:\windows\system32\inetsrv\appcmd set config /section:staticContent /+"[fileExtension='.json',mimeType='application/json']"
 }
 else{
