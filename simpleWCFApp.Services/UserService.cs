@@ -1,4 +1,5 @@
 ﻿using simpleWCFApp.Models;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace simpleWCFApp.Services
@@ -9,7 +10,7 @@ namespace simpleWCFApp.Services
 
         PagingList<User> GetUsers(PagingListOption options)
         {
-            return new PagingList<User>(userStore.Users, null, options);
+            return new PagingList<User>(userStore.Users, userStore.Users.Count(), options);
         }
     }
 }
