@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleWCFApp.app", "simpleW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleWCFApp.WebService", "simpleWCFApp.WebService\simpleWCFApp.WebService.csproj", "{06A28CF0-757F-485F-9BFD-FA50849780BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleWCFApp.Services", "simpleWCFApp.Services\simpleWCFApp.Services.csproj", "{F7694E33-866E-4AFE-A70C-3E092370C92D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleWCFApp.Models", "simpleWCFApp.Models\simpleWCFApp.Models.csproj", "{887E3965-4154-4CAD-B302-98EA22746BD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{06A28CF0-757F-485F-9BFD-FA50849780BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06A28CF0-757F-485F-9BFD-FA50849780BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06A28CF0-757F-485F-9BFD-FA50849780BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7694E33-866E-4AFE-A70C-3E092370C92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7694E33-866E-4AFE-A70C-3E092370C92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7694E33-866E-4AFE-A70C-3E092370C92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7694E33-866E-4AFE-A70C-3E092370C92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887E3965-4154-4CAD-B302-98EA22746BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887E3965-4154-4CAD-B302-98EA22746BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887E3965-4154-4CAD-B302-98EA22746BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887E3965-4154-4CAD-B302-98EA22746BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
