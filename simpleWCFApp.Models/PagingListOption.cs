@@ -6,7 +6,7 @@ namespace simpleWCFApp.Models
     [DataContract]
     public class PagingListOption
     {
-        public PagingListOption(int page = 0, int limit = 10)
+        public PagingListOption(int page = 1, int limit = 10)
         {
             this.Page = page;
             this.Limit = limit;

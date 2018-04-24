@@ -7,7 +7,7 @@ namespace simpleWCFApp.Models
     public class User
     {
         [DataMember(Name="id", IsRequired=true)]
-        public Guid Uuid { get; set; }
+        public Guid? Uuid { get; set; }
 
         [DataMember(Name="login", IsRequired=true)]
         public string Login { get; set; }
@@ -18,11 +18,24 @@ namespace simpleWCFApp.Models
         [DataMember(Name="userName", IsRequired=true)]
         public string Name { get; set; }
 
-        [DataMember(IsRequired=false, Name="url")]
-        public string Url { 
-            get {
-                return string.Format("users/{0}", this.Uuid.ToString());
+        [DataMember(IsRequired = false, Name = "url")]
+        public string Url
+        {
+            get
+            {
+                return string.Format("/users/{0}", this.Uuid.ToString());
             }
+            set
+            {
+                return;
+            }
+        }
+
+        public User From(User user)
+        {
+            this.Name = user.Name;
+            this.Login = user.Login;
+            return this;
         }
     }
 }

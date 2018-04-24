@@ -59,14 +59,20 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Hello.svc" />
-    <Content Include="Web.config" />
+    <Content Include="User.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hello.svc.cs">
-      <DependentUpon>Hello.svc</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.svc.cs">
+      <DependentUpon>User.svc</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebService.cs" />
+    <Compile Include="IWebServiceContext.cs" />
+    <Compile Include="WebServiceContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -78,6 +84,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\simpleWCFApp.Models\simpleWCFApp.Models.csproj">
+      <Project>{887e3965-4154-4cad-b302-98ea22746bd0}</Project>
+      <Name>simpleWCFApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\simpleWCFApp.Services\simpleWCFApp.Services.csproj">
+      <Project>{f7694e33-866e-4afe-a70c-3e092370c92d}</Project>
+      <Name>simpleWCFApp.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

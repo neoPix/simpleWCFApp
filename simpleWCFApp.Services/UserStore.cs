@@ -23,7 +23,7 @@ namespace simpleWCFApp.Services
                 Name = "Dylan",
                 Password = "123456789"
             });
-            for (int i = 50; i-- >= 0; )
+            for (int i = 50; --i > 0; )
             {
                 list.Add(new User()
                 {

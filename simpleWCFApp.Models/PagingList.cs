@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace simpleWCFApp.Models
 {
@@ -12,7 +9,10 @@ namespace simpleWCFApp.Models
     {
         public PagingList(IEnumerable<T> items = null, int? count = null, PagingListOption options = null)
         {
-            this.Items = items;
+            if (items != null)
+            {
+                this.Items = items.ToList();
+            }
             if (count.HasValue)
             {
                 this.Count = count.Value;
@@ -32,7 +32,7 @@ namespace simpleWCFApp.Models
         }
 
         [DataMember(Name="items")]
-        public IEnumerable<T> Items { get; set; }
+        public List<T> Items { get; set; }
 
         [DataMember(Name = "total")]
         public int Count { get; set; }
