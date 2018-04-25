@@ -1,7 +1,9 @@
-﻿using simpleWCFApp.Models;
-using System.Linq;
-using System.Collections.Generic;
+﻿using JWT.Algorithms;
+using JWT.Builder;
+using simpleWCFApp.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace simpleWCFApp.Services
 {
@@ -14,8 +16,8 @@ namespace simpleWCFApp.Services
             return new PagingList<User>(
                 userStore.Users
                     .Skip((options.Page - 1) * options.Limit)
-                    .Take(options.Limit), 
-                userStore.Users.Count(), 
+                    .Take(options.Limit),
+                userStore.Users.Count(),
                 options
             );
         }
@@ -47,6 +49,21 @@ namespace simpleWCFApp.Services
             User dbUser = this.GetSingle(user.Uuid.Value);
             dbUser.From(user);
             return dbUser;
+        }
+
+        public string Authenticate(string login, string password)
+        {
+            User dbUser = (from user in userStore.Users where user.Login.Equals(login) select user).FirstOrDefault();
+            if (dbUser != null)
+            {
+                return new JwtBuilder()
+                        .WithAlgorithm(new HMACSHA256Algorithm())
+                        .WithSecret(Properties.Settings.Default.JWTSecret)
+                        .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(4).ToUnixTimeSeconds())
+                        .AddClaim("guid", dbUser.Uuid.Value.ToString())
+                        .Build();
+            }
+            return null;
         }
     }
 }

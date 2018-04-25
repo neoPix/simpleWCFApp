@@ -99,6 +99,18 @@ namespace simpleWCFApp.WebService
                 return null;
             }
         }
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, UriTemplate = "/auth")]
+        public string Authenticate(string login, string password)
+        {
 
+            UserService userService = new UserService();
+            string token = userService.Authenticate(login, password);
+            if (String.IsNullOrEmpty(token))
+            {
+                this.Context.Forbiden();
+            }
+            return token;
+        }
     }
 }
