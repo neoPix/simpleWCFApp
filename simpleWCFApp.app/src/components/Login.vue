@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit">
+  <form @submit.prevent.stop="submit">
       <label>
           userName:
           <input type="text" v-model="userName"/>
@@ -20,8 +20,8 @@ import AuthService from '../services/AuthService';
 export default {
   data() {
       return {
-          userName: '',
-          password: ''
+          userName: 'user01',
+          password: '123456789'
       }
   },
   methods: {
