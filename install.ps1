@@ -62,7 +62,7 @@ if(Test-Path "Default Web Site")
 
 $iisApp = $null
 if(!(Test-Path simpleWCFApp)){
-    $appPath = join-path $Path 'simpleWCFApp.app' -resolve
+    $appPath = join-path $Path 'simpleWCFApp.app/dist' -resolve
     Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\InetMgr\Parameters -Name IncrementalSiteIDCreation -Value 0
     $iisApp = New-Item simpleWCFApp -bindings @{protocol="http";bindingInformation=":80:"} -physicalPath $appPath
     C:\windows\system32\inetsrv\appcmd set config /section:staticContent /+"[fileExtension='.json',mimeType='application/json']"

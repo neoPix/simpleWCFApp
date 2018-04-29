@@ -57,12 +57,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
+    <Content Include="src\main.js" />
+    <Content Include="src\router.js" />
+    <Content Include="src\services\AuthHttpService.js" />
+    <Content Include="src\services\AuthService.js" />
+    <Content Include="src\services\UserHttpService.js" />
+    <Content Include="src\services\UserService.js" />
+    <Content Include="src\store.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".babelrc" />
+    <Content Include="package.json" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\components\Login.vue" />
+    <Content Include="src\components\UserForm.vue" />
+    <Content Include="src\views\Login.vue" />
+    <Content Include="src\views\UserCreate.vue" />
+    <Content Include="src\views\UserEdit.vue" />
+    <Content Include="src\views\UserList.vue" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
