@@ -1,17 +1,15 @@
 <template>
-  <form @submit.prevent.stop="submit">
-      <label>
-          userName:
-          <input type="text" v-model="userName"/>
-      </label>
-      <label>
-          password:
-          <input type="password"  v-model="password"/>
-      </label>
-      <button class="login-validate" type="submit">
+  <el-form @submit.native.prevent="submit()">
+      <el-form-item label="Username">
+          <el-input type="text" v-model="userName"/>
+      </el-form-item>
+      <el-form-item label="Password">
+          <el-input type="password" v-model="password"/>
+      </el-form-item>
+      <el-button type="primary" native-type="submit">
           Login
-      </button>
-  </form>
+      </el-button>
+  </el-form>
 </template>
 
 <script>

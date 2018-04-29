@@ -10,7 +10,8 @@
     "axios": "^0.18.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "element-ui": "^2.3.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.7",
