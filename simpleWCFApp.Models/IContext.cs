@@ -8,6 +8,6 @@ namespace simpleWCFApp.Models
 {
     public interface IContext
     {
-        User CurentUser { get; }
+        User CurrentUser { get; set; }
     }
 }

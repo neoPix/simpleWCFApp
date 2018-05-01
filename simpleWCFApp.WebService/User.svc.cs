@@ -1,5 +1,6 @@
 ﻿using simpleWCFApp.Models;
 using simpleWCFApp.Services;
+using simpleWCFApp.WebService.Attributes;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
@@ -11,6 +12,7 @@ namespace simpleWCFApp.WebService
     public class User : WebService
     {
         [OperationContract]
+        [OperationAccess(RequiredAccessLevel=ACCESS_LEVEL.USER)]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, UriTemplate = "/users")]
         public PagingList<Models.User> GetList()
         {
@@ -27,6 +29,7 @@ namespace simpleWCFApp.WebService
         }
 
         [OperationContract]
+        [OperationAccess(RequiredAccessLevel = ACCESS_LEVEL.ADMIN)]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, UriTemplate = "/users")]
         public Models.User Add(Models.User user)
         {
@@ -43,6 +46,7 @@ namespace simpleWCFApp.WebService
         }
 
         [OperationContract]
+        [OperationAccess(RequiredAccessLevel = ACCESS_LEVEL.USER)]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, UriTemplate = "/users/{id}")]
         public Models.User GetSingle(string id)
         {
@@ -65,6 +69,7 @@ namespace simpleWCFApp.WebService
         }
 
         [OperationContract]
+        [OperationAccess(RequiredAccessLevel = ACCESS_LEVEL.ADMIN)]
         [WebInvoke(Method = "DELETE", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, UriTemplate = "/users/{id}")]
         public Models.User Delete(string id)
         {
@@ -81,6 +86,7 @@ namespace simpleWCFApp.WebService
         }
 
         [OperationContract]
+        [OperationAccess(RequiredAccessLevel = ACCESS_LEVEL.ADMIN)]
         [WebInvoke(Method = "PUT", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, UriTemplate = "/users/{id}")]
         public Models.User Update(string id, Models.User user)
         {
@@ -100,6 +106,7 @@ namespace simpleWCFApp.WebService
             }
         }
         [OperationContract]
+        [OperationAccess]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, UriTemplate = "/auth")]
         public string Authenticate(string login, string password)
         {

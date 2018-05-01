@@ -19,6 +19,7 @@ namespace simpleWCFApp.Services
             List<User> list = (List<User>)this.Users;
             list.Add(new User() { 
                 Uuid = Guid.NewGuid(),
+                Level = ACCESS_LEVEL.ADMIN,
                 Login = "user01",
                 Name = "Dylan",
                 Password = "123456789"

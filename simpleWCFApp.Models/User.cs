@@ -6,11 +6,19 @@ namespace simpleWCFApp.Models
     [DataContract]
     public class User
     {
+        public User()
+        {
+            this.Level = ACCESS_LEVEL.USER;
+        }
+
         [DataMember(Name="id", IsRequired=true)]
         public Guid? Uuid { get; set; }
 
         [DataMember(Name="login", IsRequired=true)]
         public string Login { get; set; }
+
+        [DataMember(Name = "level", IsRequired = false)]
+        public ACCESS_LEVEL Level { get; set; }
 
         [IgnoreDataMember]
         public string Password { get; set; }

@@ -65,5 +65,21 @@ namespace simpleWCFApp.Services
             }
             return null;
         }
+
+        public User FromToken(string token)
+        {
+            try
+            {
+                IDictionary<string, Object> properties = new JwtBuilder()
+                         .WithSecret(Properties.Settings.Default.JWTSecret)
+                         .MustVerifySignature()
+                         .Decode<IDictionary<string, Object>>(token);
+                return this.GetSingle(Guid.Parse(properties["guid"].ToString()));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
