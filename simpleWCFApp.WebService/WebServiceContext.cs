@@ -15,27 +15,19 @@ namespace simpleWCFApp.WebService
 
         public void NotFound(string message = "Not found")
         {
-            this.response.StatusCode = HttpStatusCode.NotFound;
-            this.response.StatusDescription = message;
+            throw new WebFaultException<string>(message, HttpStatusCode.NotFound);
         }
 
         public void ServerError(string message = "Server error")
         {
-            this.response.StatusCode = HttpStatusCode.InternalServerError;
-            this.response.StatusDescription = message;
+            throw new WebFaultException<string>(message, HttpStatusCode.InternalServerError);
         }
 
         public void Forbiden(string message = "Cannot access")
         {
-            this.response.StatusCode = HttpStatusCode.Forbidden;
-            this.response.StatusDescription = message;
+            throw new WebFaultException<string>(message, HttpStatusCode.Forbidden);
         }
-        
-        public Models.User CurentUser
-        {
-            get {
-                return null;
-            }
-        }
+
+        public Models.User CurrentUser { get; set; }
     }
 }
